@@ -1,0 +1,179 @@
+:root {
+  --bg-top: #88d8ff;
+  --bg-bottom: #d3f6ff;
+  --ground: #d7a96b;
+  --pipe: #39b54a;
+  --pipe-dark: #239037;
+  --bird: #ffd447;
+  --bird-accent: #f49f1f;
+  --text: #073b4c;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+  background: linear-gradient(180deg, #e9f9ff, #caefff);
+}
+
+.game-shell {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.game {
+  width: min(92vw, 420px);
+  aspect-ratio: 9 / 16;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.2);
+}
+
+.sky {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 15%, rgb(255 255 255 / 0.8), transparent 20%),
+    radial-gradient(circle at 75% 20%, rgb(255 255 255 / 0.55), transparent 25%);
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 14%;
+  background: repeating-linear-gradient(
+    45deg,
+    #d0a066 0 10px,
+    #ca9558 10px 20px
+  );
+  border-top: 5px solid #b17c42;
+  z-index: 4;
+}
+
+.bird {
+  position: absolute;
+  width: 46px;
+  height: 34px;
+  border-radius: 55% 45% 45% 55%;
+  background: var(--bird);
+  box-shadow: inset -8px -6px 0 var(--bird-accent);
+  z-index: 6;
+  transition: transform 0.08s linear;
+}
+
+.bird::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  right: 7px;
+  top: 7px;
+}
+
+.bird::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1d1d1d;
+  right: 10px;
+  top: 10px;
+}
+
+.pipes {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+.pipe {
+  position: absolute;
+  width: 60px;
+  background: linear-gradient(90deg, var(--pipe-dark), var(--pipe) 40%, var(--pipe-dark));
+  border: 3px solid #1d7029;
+}
+
+.pipe.top {
+  border-bottom-width: 8px;
+  border-radius: 0 0 16px 16px;
+}
+
+.pipe.bottom {
+  border-top-width: 8px;
+  border-radius: 16px 16px 0 0;
+}
+
+.score {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  color: var(--text);
+  font-size: clamp(28px, 8vw, 38px);
+  font-weight: 800;
+  text-shadow: 0 3px 0 rgb(255 255 255 / 0.75);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: rgb(7 59 76 / 0.2);
+  color: #fff;
+  padding: 16px;
+}
+
+.overlay h1,
+.overlay h2,
+.overlay p {
+  margin: 8px 0;
+}
+
+.overlay.hint {
+  background: linear-gradient(180deg, rgb(7 59 76 / 0.25), rgb(7 59 76 / 0.3));
+}
+
+.card {
+  background: rgb(255 255 255 / 0.92);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 20px 24px;
+  min-width: 200px;
+}
+
+button {
+  margin-top: 8px;
+  border: 0;
+  background: #1f9cda;
+  color: white;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}

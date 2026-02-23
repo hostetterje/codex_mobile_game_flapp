@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Flappy Pocket</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section id="game" class="game" aria-label="Flappy-style mobile game" role="application">
+        <div class="sky"></div>
+        <div class="ground"></div>
+        <div id="bird" class="bird" aria-hidden="true"></div>
+        <div id="pipes" class="pipes" aria-hidden="true"></div>
+        <div id="score" class="score" aria-live="polite">0</div>
+
+        <div id="startHint" class="overlay hint">
+          <h1>Flappy Pocket</h1>
+          <p>Tap anywhere to jump</p>
+        </div>
+
+        <div id="gameOver" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
+          <div class="card">
+            <h2 id="gameOverTitle">Game Over</h2>
+            <p>Score: <span id="finalScore">0</span></p>
+            <button id="restartBtn" type="button">Restart</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
